@@ -1,29 +1,5 @@
-// components/CastSlider.tsx
 import React from 'react';
-import styled from 'styled-components';
-
-const CastList = styled.ul`
-  list-style: none;
-  padding: 0;
-  display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  white-space: nowrap;
-
-  &::-webkit-scrollbar {
-    height: 8px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: #555;
-    border-radius: 10px;
-  }
-`;
-
-const CastItem = styled.li`
-  min-width: 120px;
-  text-align: center;
-`;
+import { CastList, CastItem } from '@/styled-components/SliderCastStyles';
 
 interface CastProps {
   cast: {
@@ -39,7 +15,9 @@ const CastSlider = ({ cast }: CastProps) => {
       {cast.map((actor) => (
         <CastItem key={actor.cast_id}>
           <p>{actor.name}</p>
-          <p><em>{actor.character}</em></p>
+          <p>
+            <em>{actor.character}</em>
+          </p>
         </CastItem>
       ))}
     </CastList>

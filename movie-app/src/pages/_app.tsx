@@ -1,22 +1,23 @@
+// pages/_app.tsx
+import React from 'react';
+import { Provider } from 'react-redux';
 import type { AppProps } from 'next/app';
-import { FavoriteContextProvider } from './../context/FavoritesContext';
-import { GlobalStyle } from '../styles/GlobalStyle';
+import { movieStore } from '../redux/store';
+import { FavoriteContextProvider } from '../context/FavoritesContext';
+import { GlobalStyle } from '../styled-components/GlobalStyle';
 import { Header } from '../components/Header';
 import { Footer } from '../components/Footer';
-import StoreProvider from '../components/StoreProvider'; 
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const initialMovies = pageProps.movies || [];
-
   return (
-    <StoreProvider initialMovies={initialMovies}>
-      <FavoriteContextProvider movies={initialMovies}> 
+    <Provider store={movieStore}>
+      <FavoriteContextProvider>
         <GlobalStyle />
         <Header />
         <Component {...pageProps} />
         <Footer />
       </FavoriteContextProvider>
-    </StoreProvider>
+    </Provider>
   );
 }
 

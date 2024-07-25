@@ -1,12 +1,12 @@
 import React from 'react';
 import { useFavorites } from '../context/FavoritesContext';
-import styled from 'styled-components';
+import { styled } from 'styled-components';
 
 interface FavoriteStarProps {
   movieId: number;
 }
 
-const StyledButtonFavorite = styled.button`
+export const StyledButtonFavorite = styled.button`
   position: absolute;
   top: 2px;
   right: 2px;
@@ -19,17 +19,18 @@ const StyledButtonFavorite = styled.button`
   transition: color 0.3s;
 
   &.gold {
-    color: gold; 
+    color: gold;
   }
 `;
-
 
 export const FavoriteStar = ({ movieId }: FavoriteStarProps) => {
   const { favorites, addFavoriteById, removeFavoriteById } = useFavorites();
   const isFavorited = favorites.includes(movieId);
 
-  const toggleFavorite = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    event.stopPropagation(); 
+  const toggleFavorite = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
     if (isFavorited) {
       removeFavoriteById(movieId);
     } else {
@@ -45,6 +46,5 @@ export const FavoriteStar = ({ movieId }: FavoriteStarProps) => {
     >
       {isFavorited ? '★' : '☆'}
     </StyledButtonFavorite>
-  
   );
 };

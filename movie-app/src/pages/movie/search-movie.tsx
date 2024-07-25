@@ -12,7 +12,7 @@ import {
 } from '@/styled-components/SearchBarStyles';
 import { Movie } from '@/types/movies';
 
-export const SearchBar = () => {
+const SearchMovie = () => {
   const [query, setQuery] = useState<string>('');
   const [results, setResults] = useState<Movie[]>([]);
   const [selectedIndex, setSelectedIndex] = useState<number>(-1);
@@ -70,21 +70,19 @@ export const SearchBar = () => {
       }
     }
   };
+
   return (
     <SearchContainer ref={containerRef}>
-      <>
-        <Input
-          type="text"
-          placeholder=" Search Movies"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onKeyDown={handleKeyDown}
-        />
-        <Button onClick={() => query && fetchSearchResults(query)}>
-          <FaSearch />
-        </Button>
-      </>
-
+      <Input
+        type="text"
+        placeholder="Search movies"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        onKeyDown={handleKeyDown}
+      />
+      <Button onClick={() => query && fetchSearchResults(query)}>
+        <FaSearch />
+      </Button>
       {results.length > 0 && (
         <Dropdown isOpen={isOpen}>
           {results.map((movie, index) => (
@@ -106,3 +104,5 @@ export const SearchBar = () => {
     </SearchContainer>
   );
 };
+
+export default SearchMovie;

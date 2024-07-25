@@ -1,54 +1,68 @@
-import { useSelector } from 'react-redux';
-import { useAppDispatch } from '../../../lib/hooks';
-import { fetchAndInitializeMoviesAndGenres, fetchAllMovies } from './movieSlice';
-import { RootState } from '@/redux/store';
-import { useCallback, useEffect, useState } from 'react';
-import { Movie } from '../../../types/movie';
-import { fetchMovieDetails } from '@/lib/api';
+import { useAppDispatch } from '../../../lib/storeHooks';
+import {
+  fetchAndInitializeMoviesAndGenres,
+  fetchInitializeNewMovies,
+  fetchInitializeMoviesDetails,
+  fetchInitializeGenres,
+  fetchInitializeFilterMovies,
+  fetchAppendFilterMovies,
+} from './../../actions/movieActions';
+import { useCallback } from 'react';
+
 export const useMovieActions = () => {
-    const dispatch = useAppDispatch();
-  
-    const initializeMovies = useCallback(() => {
-      dispatch(fetchAllMovies());
-    }, [dispatch]);
-  
-    const initializeSortMovieByGenre = useCallback(() => {
-      dispatch(fetchAndInitializeMoviesAndGenres());
-    }, [dispatch]);
-  
-    return { initializeMovies, initializeSortMovieByGenre };
+  const dispatch = useAppDispatch();
+
+  const initializeMovies = useCallback(() => {
+    dispatch(fetchInitializeNewMovies());
+  }, [dispatch]);
+  const initializeMoviesDetails = useCallback(
+    (movieId: string | string[] | undefined) => {
+      dispatch(fetchInitializeMoviesDetails(movieId));
+    },
+    [dispatch]
+  );
+
+  const initializeFilteredMovies = useCallback(
+    (
+      selectedGenreId: number,
+      selectedScore: number,
+      selectedYear: number,
+      selectedPage: number
+    ) => {
+      dispatch(
+        fetchInitializeFilterMovies(
+          selectedGenreId,
+          selectedScore,
+          selectedYear,
+          selectedPage
+        )
+      );
+    },
+    [dispatch]
+  );
+  const initializeAppendFilteredMovies = useCallback(
+    (selectedGenreId: number, selectedScore: number, selectedYear: number) => {
+      dispatch(
+        fetchAppendFilterMovies(selectedGenreId, selectedScore, selectedYear)
+      );
+    },
+    [dispatch]
+  );
+
+  const initializeSortMovieByGenre = useCallback(() => {
+    dispatch(fetchAndInitializeMoviesAndGenres());
+  }, [dispatch]);
+
+  const initializeSortByGenre = useCallback(() => {
+    dispatch(fetchInitializeGenres());
+  }, [dispatch]);
+
+  return {
+    initializeMovies,
+    initializeMoviesDetails,
+    initializeSortMovieByGenre,
+    initializeSortByGenre,
+    initializeFilteredMovies,
+    initializeAppendFilteredMovies,
   };
-
-export const useMovieData = () => {
-    const movies = useSelector((state: RootState) => state.movies.movies);
-    const genres = useSelector((state: RootState) => state.movies.genres);
-    const popularMoviesByGenre = useSelector((state: RootState) => state.movies.popularMoviesByGenre);
-    console.log( "Po žanru",popularMoviesByGenre);
-    return { movies, genres, popularMoviesByGenre };
-  };
-
-
-
-export const useMovieDetails = (movieId: number) => {
-  const [movie, setMovie] = useState<Movie | null>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    const getMovieDetails = async () => {
-      try {
-        setLoading(true);
-        const data: Movie = await fetchMovieDetails(movieId);
-        setMovie(data);
-      } catch (err) {
-        setError(err as Error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    getMovieDetails();
-  }, [movieId]);
-
-  return { movie, loading, error };
 };
