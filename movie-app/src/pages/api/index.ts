@@ -2,7 +2,7 @@ const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 export const fetchNewestMovies = async () => {
-  const pages = [1, 2];
+  const pages = [1, 2, 3, 4, 5, 6];
   const requests = pages.map(page =>
     fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`, {
       method: 'GET',
@@ -32,7 +32,7 @@ export const fetchGenres = async () => {
     }
   });
   const data = await response.json();
-  return data.genres;
+  return data.genres.slice(0, 10);
 };
 
 export const fetchMovieDetails = async (movieId: string | string[] | undefined) => {
