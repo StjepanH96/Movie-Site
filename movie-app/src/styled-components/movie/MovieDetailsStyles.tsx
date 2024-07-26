@@ -107,7 +107,7 @@ const SliderContainer = styled.div`
   overflow-x: auto;
   white-space: nowrap;
   padding: 10px 0;
-  width: 100%; // Full width container
+  width: 100%; 
 
   &::after {
     position: absolute;
