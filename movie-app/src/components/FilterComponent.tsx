@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react';
 import { useMovieActions } from '@/redux/reducers/movies/movieStateManagement';
-import { useMovieFilter } from '../lib/useMovieFilter';
 import {
   FiltersContainer,
   Label,
   Select,
   SelectWrapper,
 } from '@/styled-components/FilterComponent';
-import { useMovieData } from '@/lib/useMovieData';
+import { useMovieData, useMovieFilter } from '@/lib';
 
 export const FilterComponent = () => {
   const { initializeSortByGenre, initializeFilteredMovies } = useMovieActions();

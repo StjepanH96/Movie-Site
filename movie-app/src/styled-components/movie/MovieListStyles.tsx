@@ -15,7 +15,13 @@ const MovieGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
+
+  @media (max-width: 750px) {  
+    grid-template-columns: repeat(2, 1fr);  
+  }
 `;
+
+
 
 const NoFavoritesMessage = styled.p`
   color: #fff;

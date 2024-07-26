@@ -7,7 +7,7 @@ import React, {
   ReactNode,
 } from 'react';
 import { Movie } from '@/types/movies';
-import { useMovieData } from '@/lib/useMovieData';
+import { useMovieData } from '@/lib';
 
 interface FavoritesContextType {
   favorites: number[];

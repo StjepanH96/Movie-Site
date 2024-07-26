@@ -9,7 +9,7 @@ import {
   NavigationLinks,
   StyledLink,
   StyledNavigation,
-} from '@/styled-components/NavigationBarStyles';
+} from '@/styled-components';
 
 export const NavigationBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,7 +35,7 @@ export const NavigationBar = () => {
       <MenuIcon onClick={toggleMenu}>
         {isOpen ? <FaTimes /> : <FaBars />}
       </MenuIcon>
-      <NavigationLinks show={isOpen}>
+      <NavigationLinks $show={isOpen}>
         <Link href="/" passHref>
           <StyledLink onClick={toggleMenu}>Home</StyledLink>
         </Link>

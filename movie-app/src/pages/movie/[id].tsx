@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useMovieActions } from '../../redux/reducers/movies/movieStateManagement';
-import { LoadingSpinner } from '@/components/Spinner';
-import { ErrorModal } from '../../components/ErrorModal';
+import { LoadingSpinner, ErrorModal } from '@/components';
 import {
   Banner,
   CastItem,
@@ -18,10 +17,10 @@ import {
   PlayButton,
   SliderContainer,
   VideoModal,
-} from '@/styled-components/movie/MovieDetailsStyles';
-import { FavoriteStar } from '@/components/FavoriteStart';
+} from '@/styled-components/movie';
+import { FavoriteStar } from '@/components';
 import { Genre } from '@/types/movies';
-import { useMovieData } from '@/lib/useMovieData';
+import { useMovieData } from '@/lib';
 
 const MoviePage = () => {
   const [showVideo, setShowVideo] = useState(false);
@@ -38,7 +37,7 @@ const MoviePage = () => {
       initializeMoviesDetails(movieId);
     }
   }, [initializeMoviesDetails, movieId]);
-  
+
   const handlePlayVideo = () => {
     setShowVideo(true);
   };

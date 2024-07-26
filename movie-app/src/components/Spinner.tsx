@@ -1,6 +1,6 @@
 import React from 'react';
 import { styled } from 'styled-components';
-import { useMovieData } from '@/lib/useMovieData';
+import { useMovieData } from '@/lib';
 
 export const StyledLoadingSpinner = styled.div`
   border: 4px solid rgba(0, 0, 0, 0.1);

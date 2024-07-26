@@ -1,14 +1,12 @@
 import React, { useMemo } from 'react';
-import { MovieCard } from '../../components/MovieCard';
 import router from 'next/router';
 import { useFavorites } from '@/context/FavoritesContext';
-import { ErrorModal } from '@/components/ErrorModal';
-import { LoadingSpinner } from '@/components/Spinner';
+import { ErrorModal, LoadingSpinner, MovieCard } from '@/components';
 import {
   MovieListContainer,
   MovieGrid,
   NoFavoritesMessage,
-} from '@/styled-components/movie/MovieListStyles';
+} from '@/styled-components/movie';
 
 const FavoriteMovies = () => {
   const { getFavoriteMovies, isLoading, error } = useFavorites();

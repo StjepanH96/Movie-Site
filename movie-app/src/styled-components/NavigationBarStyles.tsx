@@ -1,8 +1,10 @@
-import { styled } from 'styled-components';
+import { styled } from "styled-components";
 
 const StyledNavigation = styled.nav`
   flex-direction: column;
+
 `;
+
 
 const MenuIcon = styled.div`
   color: white;
@@ -12,20 +14,24 @@ const MenuIcon = styled.div`
 
   @media (min-width: 958px) {
     display: none;
+
   }
 
+
   @media (max-width: 958px) {
-    margin-right: 40px;
-    margin-top: 20px;
+  margin-right:40px;
+  margin-top:20px;
+
   }
+
 `;
 
 interface NavigationLinksProps {
-  show: boolean;
+  $show: boolean;
 }
 
 const NavigationLinks = styled.div<NavigationLinksProps>`
-  display: ${(props) => (props.show ? 'flex' : 'none')};
+  display: ${props => props.$show ? 'flex' : 'none'};
   flex-direction: column;
   align-items: flex-start;
   width: 150%;
@@ -66,10 +72,4 @@ const MobileSearchLink = styled(StyledLink)`
   }
 `;
 
-export {
-  MobileSearchLink,
-  StyledLink,
-  NavigationLinks,
-  MenuIcon,
-  StyledNavigation,
-};
+export {MobileSearchLink, StyledLink, NavigationLinks,MenuIcon, StyledNavigation }

@@ -1,20 +1,18 @@
 import React, { useEffect, useRef } from 'react';
 import { useMovieActions } from '../../redux/reducers/movies/movieStateManagement';
-import { MovieCard } from '../../components/MovieCard';
-import { FilterComponent } from '../../components/FilterComponent';
+import { LoadingSpinner,  MovieCard, FilterComponent } from '../../components';
 import { useMovieFilter } from '@/lib/useMovieFilter';
 import router from 'next/router';
-import { LoadingSpinner } from '../../components/Spinner';
 import {
   MovieListContainer,
   MovieGrid,
-} from '@/styled-components/movie/MovieListStyles';
-import { LoaderContainer } from '@/styled-components/movie/MovieDetailsStyles';
-import { useMovieData } from '@/lib/useMovieData';
+  LoaderContainer
+} from '@/styled-components/movie';
+import { useMovieData } from '@/lib';
 
 const MostWatched = () => {
   const { moviesFiltered, hasMore } = useMovieData();
-  const { initializeAppendFilteredMovies, initializeFilteredMovies } =
+  const { initializeAppendFilteredMovies} =
     useMovieActions();
   const loader = useRef<HTMLDivElement | null>(null);
   const { selectedGenreId, selectedYear, selectedScore } = useMovieFilter();

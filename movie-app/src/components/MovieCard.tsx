@@ -4,7 +4,7 @@ import {
   MovieItem,
   MovieOverlay,
   MovieTitle,
-} from '../styled-components/movie/MovieCardStyles';
+} from '../styled-components/movie';
 import { Movie } from '@/types/movies';
 import { FavoriteStar } from './FavoriteStart';
 

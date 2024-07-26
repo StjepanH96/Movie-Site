@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Movie App
 
-## Getting Started
+Getting Started
 
-First, run the development server:
+Prerequisites
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Before you can run this project locally, make sure you have the following installed:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+	•	Node.js (recommended version: 16.x or higher)
+	•	Docker
+	•	Docker Compose
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Installation
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Follow these steps to get your development environment set up:
 
-## Learn More
+	1.	Clone the repository
 
-To learn more about Next.js, take a look at the following resources:
+    git clone https://yourrepository.com/movie-app.git
+    cd movie-app
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    2.	Install dependencies
+        
+    npm install
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+    3.	Start the application using Docker Compose 
 
-## Deploy on Vercel
+    docker-compose up
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    4.	Optionally you can run the development server only, there is not added volume in docker file so if you want make changes and see them you need to  use this command or add volume in docker file.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+    npm run dev
+
+Architecture
+
+
+	•	React: Manages the UI components.
+	•	Next.js: Facilitates server-side rendering and static site generation.
+	•	Redux & Redux Toolkit: Manages state across the application, enhancing Redux usage for easier configuration and maintenance. Favorites are saved using local storage inside FavoritesContext.tsx.
+	•	TMDB Movie APIs: Nested inside pages/api. Browser caching is also utilized to enhance performance.
+
+Backend Setup
+
+	•	Next.js API Routes: pages/api/search.js Handles backend operations like searching and fetching movies directly within the Next.js framework. 
+
+Modern JavaScript Features (ES6+)
+
+	•	Utilizes arrow functions, async/await, destructuring, modules, and more to keep the codebase modern and clean.
+
+Features
+
+	•	Home Page - Top 3 Movies of the Week: Showcases the most popular movies based on user ratings and also displays movies filtered by genre.
+	•	Most Watched - Infinite Scrolling: Loads more movies as the user scrolls down, providing a seamless browsing experience. When users apply filters for genre, year, and score, it resets the pagination to the first page request and follows the same policy.
+	•	New Movies: Shows new movies that are currently playing.
+	•	Movie Details: Contains all information about a movie, including a cast slider that slides horizontally. Additionally, banners and trailers are pulled for movies, with some featuring preview videos or interviews.
+	•	Search: Includes search options, which use a backend endpoint and return a list of movies based on the query.
+	•	Responsive Design: Ensures the app looks great on both desktops and mobile devices. On mobile, an extra page is added for favorites to map favorite movies. For larger screens, there is a dropdown.
+
+Scripts
+
+Here are some useful commands you can use:
+
+	•	npm run dev: Runs the app in development mode.
+	•	npm run build: Builds the app for production.
+	•	npm start: Starts a production server.
+	•	npm run lint: Lints and fixes files.

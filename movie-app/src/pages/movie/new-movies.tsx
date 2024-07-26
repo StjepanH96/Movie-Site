@@ -1,15 +1,13 @@
 import React, { useEffect } from 'react';
 import { useMovieActions } from '../../redux/reducers/movies/movieStateManagement';
-import { MovieCard } from '../../components/MovieCard';
 import router from 'next/router';
-import { LoadingSpinner } from '@/components/Spinner';
-import { ErrorModal } from '@/components/ErrorModal';
-import { LoaderContainer } from '@/styled-components/movie/MovieDetailsStyles';
+import { LoadingSpinner, ErrorModal, MovieCard } from '@/components';
 import {
   MovieListContainer,
   MovieGrid,
-} from '@/styled-components/movie/MovieListStyles';
-import { useMovieData } from '@/lib/useMovieData';
+  LoaderContainer
+} from '@/styled-components/movie';
+import { useMovieData } from '@/lib';
 
 const MostWatched = () => {
   const { initializeMovies } = useMovieActions();

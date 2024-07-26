@@ -9,7 +9,7 @@ interface CastProps {
   }[];
 }
 
-const CastSlider = ({ cast }: CastProps) => {
+export const CastSlider = ({ cast }: CastProps) => {
   return (
     <CastList>
       {cast.map((actor) => (
@@ -24,4 +24,3 @@ const CastSlider = ({ cast }: CastProps) => {
   );
 };
 
-export default CastSlider;

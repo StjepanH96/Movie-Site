@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
 import router from 'next/router';
 import { useMovieActions } from '../redux/reducers/movies/movieStateManagement';
-import { MovieCard } from '@/components/MovieCard';
-import { LoadingSpinner } from '@/components/Spinner';
-import { ErrorModal } from '@/components/ErrorModal';
+import { LoadingSpinner, MovieCard, ErrorModal } from '@/components';
 import {
   MovieItem,
   MovieItemTop,
@@ -11,7 +9,7 @@ import {
   SectionTitle,
   Container,
 } from '@/styled-components/GlobalStyle';
-import { useMovieData } from '@/lib/useMovieData';
+import { useMovieData } from '@/lib';
 
 const Home = () => {
   const { initializeMovies, initializeSortMovieByGenre } = useMovieActions();

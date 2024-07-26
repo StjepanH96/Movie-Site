@@ -5,8 +5,7 @@ import type { AppProps } from 'next/app';
 import { movieStore } from '../redux/store';
 import { FavoriteContextProvider } from '../context/FavoritesContext';
 import { GlobalStyle } from '../styled-components/GlobalStyle';
-import { Header } from '../components/Header';
-import { Footer } from '../components/Footer';
+import { Header, Footer } from '../components';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

@@ -2,7 +2,7 @@ import {
   PageWrapper,
   StyledFooter,
   PositionFooter,
-} from '@/styled-components/FooterStyles';
+} from '@/styled-components';
 
 export const Footer = () => {
   return (
