@@ -16,7 +16,7 @@ Follow these steps to get your development environment set up:
 
 	1.	Clone the repository
 
-    git clone https://yourrepository.com/movie-app.git
+    git clone https://github.com/StjepanH96/Movie-Site.git
     cd movie-app
 
     2.	Install dependencies
