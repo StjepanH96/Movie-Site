@@ -18,7 +18,7 @@ export default async function handler(req, res) {
 
   try {
     const response = await fetch(url);
-    const data = await response.json(); // Always parse the JSON to inspect the full response
+    const data = await response.json();
     if (!response.ok) {
       console.error('Error fetching data:', response.status, response.statusText, data);
       return res.status(response.status).json({ error: response.statusText });

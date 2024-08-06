@@ -40,10 +40,10 @@ const DropdownContent = styled.div`
     opacity 0.5s ease-out;
   opacity: 0;
   border-radius: 0 0 4px 4px;
-  overflow-y: auto; /* Ensures scrollbar is only vertical */
-  overflow-x: hidden; /* Prevents horizontal scrollbar */
-  max-height: 300px; /* Adjust as necessary */
-  z-index: 1000; /* Ensures dropdown is above other content */
+  overflow-y: auto; 
+  overflow-x: hidden;
+  max-height: 300px; 
+  z-index: 1000; 
   transition: max-height 0.2s ease-out;
 
   &.show {
