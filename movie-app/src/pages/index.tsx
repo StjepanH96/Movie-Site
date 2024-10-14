@@ -28,7 +28,6 @@ const Home = () => {
   const topMovies = [...movies]
     .sort((a, b) => b.popularity - a.popularity)
     .slice(0, 3);
-
   return (
     <>
       <Container>
@@ -38,18 +37,12 @@ const Home = () => {
             <section>
               <SectionTitle>Top 3 Movies of the Week</SectionTitle>
               <MovieList>
-                {loading ? (
-                  <LoadingSpinner />
-                ) : (
-                  topMovies.map((movie, index) => (
-                    <MovieItemTop key={index}>
-                      <MovieCard
-                        movie={movie}
-                        onMovieClick={handleMovieClick}
-                      />
-                    </MovieItemTop>
-                  ))
-                )}
+              {topMovies.map((movie, index) => (
+                <MovieItemTop key={index} >
+                  <MovieCard key={index} movie={movie} onMovieClick={handleMovieClick} />
+                </MovieItemTop>
+              ))}
+        
               </MovieList>
             </section>
           </div>
