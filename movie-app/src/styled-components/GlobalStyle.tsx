@@ -47,11 +47,30 @@ const SectionTitle = styled.h2`
 const MovieList = styled.div`
   display: flex;
   flex-direction: row;
-  overflow-x: auto;
+  overflow-x: scroll;
   padding: 20px 0;
   align-items: center;
-`;
+  scrollbar-width: none; 
+  -ms-overflow-style: none; 
 
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 50px;
+    pointer-events: none; 
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent); 
+  }
+`;
 const MovieItem = styled.div`
   position: relative;
   margin-right: 20px;
